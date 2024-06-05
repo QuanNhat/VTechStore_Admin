@@ -17,8 +17,6 @@ import { toast } from "react-toastify";
 
 dayjs.extend(customParseFormat);
 
-const dateFormat = "YYYY-MM-DD";
-
 interface FieldType extends Omit<Product, "createdAt" | "updatedAt" | "category"> {
   categoryName: string;
 }

@@ -6,7 +6,7 @@ import CustomUploadListImg from "@/components/common/CustomUploadListImg";
 import productService from "@/services/productService";
 import { Category } from "@/types/category";
 import { Product } from "@/types/product";
-import { Button, Form, FormProps, Input, InputNumber, Radio } from "antd";
+import { Button, Form, FormProps, Input, InputNumber } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";

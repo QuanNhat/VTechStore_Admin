@@ -2,7 +2,6 @@ import CustomContent from "@/components/common/CustomContent";
 import CustomHeader from "@/components/common/CustomHeader";
 import userService from "@/services/userService";
 import { User } from "@/types/user";
-import { routes } from "@/utils/constant";
 import { Button, DatePicker, Form, FormProps, Input, InputNumber, Radio } from "antd";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";

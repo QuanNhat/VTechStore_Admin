@@ -6,7 +6,7 @@ import { DesktopOutlined, LoginOutlined, PieChartFilled } from "@ant-design/icon
 import type { MenuProps } from "antd";
 import { Layout, Menu } from "antd";
 import React from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const { Sider } = Layout;
 
