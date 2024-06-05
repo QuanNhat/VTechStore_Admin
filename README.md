@@ -1,4 +1,4 @@
-# Recycle app
+# Admin phone store page
 
 ### Tech: React + TypeScript + Ant Design
 
@@ -9,7 +9,7 @@ Link demo:
 ### Env file
 
 ```js
-VITE_API_ENDPOINT=http://localhost:8080
+VITE_API_ENDPOINT=http://localhost:4000
 
 ```
 
