@@ -3,11 +3,11 @@ import CustomHeader from "@/components/common/CustomHeader";
 import userService from "@/services/userService";
 import { User } from "@/types/user";
 import { Button, DatePicker, Form, FormProps, Input, InputNumber, Radio } from "antd";
-import dayjs from "dayjs";
-import customParseFormat from "dayjs/plugin/customParseFormat";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
 
 dayjs.extend(customParseFormat);
 
@@ -152,7 +152,7 @@ const DetailUserPage = () => {
               <Form.Item<FieldType>
                 name={"date_of_birth"}
                 label="Ngày sinh"
-                initialValue={dayjs(data?.date_of_birth, dateFormat)}
+                initialValue={data?.date_of_birth && dayjs(data?.date_of_birth, dateFormat)}
               >
                 <DatePicker />
               </Form.Item>

@@ -55,3 +55,15 @@ export const formatPrice = (price: number) => {
 export function removeEndpoint(item: string): string {
   return item.replace(`${import.meta.env.VITE_API_ENDPOINT}/images/`, "");
 }
+
+export const formattedDate = (date: Date) => {
+  return date.toISOString();
+};
+
+// format type dd/mm
+export const formatDateDDMM = (date: Date) => {
+  const d = new Date(date);
+  const month = `0${d.getMonth() + 1}`.slice(-2); // Adding 1 since getMonth() returns 0-indexed month
+  const day = `0${d.getDate()}`.slice(-2);
+  return `${day}/${month}`;
+};
