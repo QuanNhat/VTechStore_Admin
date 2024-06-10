@@ -69,10 +69,12 @@ const router = createBrowserRouter([
             element: <TableUserPage />,
           },
         ],
+        errorElement: <NotFound />,
       },
 
       {
         path: routes.product,
+        element: <TableProductPage />,
         children: [
           {
             path: "add",
@@ -87,9 +89,11 @@ const router = createBrowserRouter([
             element: <TableProductPage />,
           },
         ],
+        errorElement: <NotFound />,
       },
       {
         path: routes.category,
+        element: <TableCategoryPage />,
         children: [
           {
             path: "add",
@@ -104,10 +108,12 @@ const router = createBrowserRouter([
             element: <TableCategoryPage />,
           },
         ],
+        errorElement: <NotFound />,
       },
       {
         path: routes.report,
         element: <ChartPage />,
+        errorElement: <NotFound />,
       },
     ],
   },
