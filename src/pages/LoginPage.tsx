@@ -1,57 +1,65 @@
-import logo from "@/assets/icons/logo.svg";
-import { useAuthContext } from "@/context/AuthProvider";
-import authService from "@/services/authService";
-import { routes } from "@/utils/constant";
-import { setLocalStorage, storageConstants } from "@/utils/localStorage";
-import { LockOutlined, UserOutlined } from "@ant-design/icons";
-import type { FormProps } from "antd";
-import { Button, Form, Input } from "antd";
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import logo from "@/assets/icons/logo.svg"
+import { useAuthContext } from "@/context/AuthProvider"
+import authService from "@/services/authService"
+import { routes } from "@/utils/constant"
+import { setLocalStorage, storageConstants } from "@/utils/localStorage"
+import { LockOutlined, UserOutlined } from "@ant-design/icons"
+import type { FormProps } from "antd"
+import { Button, Form, Input } from "antd"
+import React from "react"
+import { useNavigate } from "react-router-dom"
+import { toast } from "react-toastify"
 
 interface FieldType {
-  email: string;
-  password: string;
+  email: string
+  password: string
 }
 
 const LoginPage: React.FC = () => {
-  const navigate = useNavigate();
-  const { setIsAuthenticated, setProfile } = useAuthContext();
+  const navigate = useNavigate()
+  const { setIsAuthenticated, setProfile } = useAuthContext()
 
   const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
     try {
-      const res = await authService.login(values);
+      const res = await authService.login(values)
       if (res?.data?.data?.access_token) {
-        console.log("res: ", res);
-        setLocalStorage(storageConstants.profile, res?.data?.data?.user);
-        setLocalStorage(storageConstants.accessToken, res?.data?.data?.access_token);
-        setLocalStorage(storageConstants.refreshToken, res?.data?.data?.refresh_token);
+        console.log("res: ", res)
+        setLocalStorage(storageConstants.profile, res?.data?.data?.user)
+        setLocalStorage(
+          storageConstants.accessToken,
+          res?.data?.data?.access_token
+        )
+        setLocalStorage(
+          storageConstants.refreshToken,
+          res?.data?.data?.refresh_token
+        )
 
-        setIsAuthenticated(true);
-        setProfile(res?.data?.data?.user);
-        toast.success(res?.data?.message);
-        navigate(routes.home);
+        setIsAuthenticated(true)
+        setProfile(res?.data?.data?.user)
+        toast.success(res?.data?.message)
+        navigate(routes.home)
       } else {
-        const errorMessage = res?.data;
-        const msg = Object.values(errorMessage);
-        toast.error(msg?.[0] || errorMessage?.message);
+        const errorMessage = res?.data
+        const msg = Object.values(errorMessage)
+        toast.error(msg?.[0] || errorMessage?.message)
       }
     } catch (error: any) {
-      console.log("error: ", error);
-      const errorMessage = error?.response?.data;
-      const msg = Object.values(errorMessage?.data);
-      toast.error(msg?.[0] || errorMessage?.message);
+      console.log("error: ", error)
+      const errorMessage = error?.response?.data
+      const msg = Object.values(errorMessage?.data)
+      toast.error(msg?.[0] || errorMessage?.message)
     }
-  };
+  }
 
-  const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
+  const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (
+    errorInfo
+  ) => {
+    console.log("Failed:", errorInfo)
+  }
 
   return (
     <div className="grid grid-cols-2">
-      <div className="bg-cyan-600 flex items-center justify-center h-screen w-full">
+      <div className="bg-teal-600 flex items-center justify-center h-screen w-full">
         <img src={logo} alt="logo" />
       </div>
 
@@ -85,14 +93,18 @@ const LoginPage: React.FC = () => {
           </Form.Item>
 
           <Form.Item>
-            <Button type="primary" htmlType="submit" className="w-full mt-6">
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="w-full mt-6 bg-teal-600"
+            >
               Đăng nhập
             </Button>
           </Form.Item>
         </Form>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default LoginPage;
+export default LoginPage
