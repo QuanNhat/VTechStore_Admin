@@ -74,7 +74,6 @@ const router = createBrowserRouter([
 
       {
         path: routes.product,
-        element: <TableProductPage />,
         children: [
           {
             path: "add",
@@ -93,7 +92,6 @@ const router = createBrowserRouter([
       },
       {
         path: routes.category,
-        element: <TableCategoryPage />,
         children: [
           {
             path: "add",

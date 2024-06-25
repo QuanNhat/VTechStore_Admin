@@ -85,7 +85,7 @@ const ChartPage = () => {
     }));
 
     setLabels(result.map((invoice: any) => invoice.label));
-    setValues(result.map((invoice: any) => invoice.value));
+    setValues(result.map((invoice: any) => Math.abs(invoice.value)));
     return data;
   };
 
