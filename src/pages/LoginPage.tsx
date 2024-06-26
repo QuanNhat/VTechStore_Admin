@@ -8,7 +8,8 @@ import type { FormProps } from "antd"
 import { Button, Form, Input } from "antd"
 import React from "react"
 import { useNavigate } from "react-router-dom"
-import { toast } from "react-toastify"
+import { ToastContainer, toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 interface FieldType {
   email: string
@@ -36,7 +37,7 @@ const LoginPage: React.FC = () => {
 
         setIsAuthenticated(true)
         setProfile(res?.data?.data?.user)
-        toast.success(res?.data?.message)
+        toast.success("Đăng nhập thành công")
         navigate(routes.home)
       } else {
         const errorMessage = res?.data
@@ -45,9 +46,7 @@ const LoginPage: React.FC = () => {
       }
     } catch (error: any) {
       console.log("error: ", error)
-      const errorMessage = error?.response?.data
-      const msg = Object.values(errorMessage?.data)
-      toast.error(msg?.[0] || errorMessage?.message)
+      toast.error(error.message || "Đăng nhập thất bại")
     }
   }
 
@@ -103,6 +102,7 @@ const LoginPage: React.FC = () => {
           </Form.Item>
         </Form>
       </div>
+      <ToastContainer />
     </div>
   )
 }
